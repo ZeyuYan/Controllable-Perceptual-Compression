@@ -362,8 +362,8 @@ for epoch in range(train_epoch):
             G_result = G2(G2_input)
             D_result = D(G_result, bitstream.data).squeeze()
             
-            #mse_loss = torch.sqrt(torch.sum((G_result - x_mse_.data)**2, dim=[1,2,3]))
-            mse_loss = torch.mean((G_result - x_mse_.data)**2, dim=[1,2,3])
+            mse_loss = torch.sqrt(torch.sum((G_result - x_mse_.data)**2, dim=[1,2,3]))
+            #mse_loss = torch.mean((G_result - x_mse_.data)**2, dim=[1,2,3])
 
             G_train_loss = - beta * D_result.mean() + (1-beta) * mse_loss.mean()
 
